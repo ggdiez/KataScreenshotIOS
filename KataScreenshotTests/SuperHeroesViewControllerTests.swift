@@ -21,15 +21,41 @@ class SuperHeroesViewControllerTests: ScreenshotTest {
         verify(viewController: viewController)
     }
     
-    func testNotShowsEmptyCaseIfThereAreSuperHeroes () {
+    func testShowOnlyOneSuperHero () {
         _ = givenThereAreSomeSuperHeroes(1)
         
         let viewController = getSuperHeroDetailViewController()
         
         verify(viewController: viewController)
     }
-
-
+    
+    func testShowTenSuperHeroesAreShownProperly () {
+        _ = givenThereAreSomeSuperHeroes(10)
+        
+        let viewController = getSuperHeroDetailViewController()
+        
+        verify(viewController: viewController)
+    }
+    
+    func testShowTenAvengersHeroesAreShownProperly () {
+        _ = givenThereAreSomeSuperHeroes(10, avengers: true)
+        
+        let viewController = getSuperHeroDetailViewController()
+        
+        verify(viewController: viewController)
+    }
+    
+    
+    func testShowEndOfTheListOfSuperHeroes () {
+        _ = givenThereAreSomeSuperHeroes(10)
+        
+        //TODO: With kiff move the scroll to the final
+        
+        let viewController = getSuperHeroDetailViewController()
+        
+        verify(viewController: viewController)
+    }
+    
     fileprivate func givenThereAreSomeAvengers() -> [SuperHero] {
         return givenThereAreSomeSuperHeroes(avengers: true)
     }
